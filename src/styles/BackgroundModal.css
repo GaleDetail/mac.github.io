@@ -1,0 +1,36 @@
+.background-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.background-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.background-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.background-name {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.pagination-container .ms-3 {
+    margin-left: 1rem;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import Message from '../Message';
+import Message from '../common/Message';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');

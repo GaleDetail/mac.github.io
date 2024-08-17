@@ -1,10 +1,10 @@
-// src/components/ProfileSettings.js
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
 const ProfileSettings = () => {
     return (
-        <Container className="mt-5">
+        <Container className="d-flex align-items-center justify-content-center mt-5">
+            <div>
             <h2>Profile Settings</h2>
             <Form>
                 <Form.Group controlId="formName">
@@ -26,6 +26,7 @@ const ProfileSettings = () => {
                     Save Changes
                 </Button>
             </Form>
+            </div>
         </Container>
     );
 };

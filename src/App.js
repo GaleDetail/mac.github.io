@@ -3,13 +3,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
-import Home from './components/Home';
-import About from './components/About';
-import HowToUse from './components/HowToUse';
-import Contact from './components/Contact';
-import Profile from './components/Profile';
-import Header from './components/Header';
-import ProfileSettings from "./components/ProfileSettings";
+import Home from './components/pages/Home';
+import About from './components/pages/About';
+import HowToUse from './components/pages/HowToUse';
+import Contact from './components/pages/Contact';
+import Profile from './components/pages/profile/Profile';
+import Header from './components/common/Header';
+import ProfileSettings from "./components/pages/profile/ProfileSettings";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
