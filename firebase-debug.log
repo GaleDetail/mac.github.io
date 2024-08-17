@@ -1,0 +1,21 @@
+[debug] [2024-08-08T10:46:03.791Z] ----------------------------------------------------------------------
+[debug] [2024-08-08T10:46:03.793Z] Command:       C:\Users\Ksu\AppData\Roaming\JetBrains\WebStorm2024.1\node\node-v18.15.0-win-x64\node.exe C:\Users\Ksu\AppData\Roaming\JetBrains\WebStorm2024.1\node\node-v18.15.0-win-x64\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-08-08T10:46:03.793Z] CLI Version:   13.15.0
+[debug] [2024-08-08T10:46:03.793Z] Platform:      win32
+[debug] [2024-08-08T10:46:03.793Z] Node Version:  v18.15.0
+[debug] [2024-08-08T10:46:03.794Z] Time:          Thu Aug 08 2024 13:46:03 GMT+0300 (Eastern European Summer Time)
+[debug] [2024-08-08T10:46:03.794Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-08-08T10:46:03.802Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-08-08T10:46:03.802Z] > authorizing via signed-in user (jabbadeveloper@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Ksu\WebstormProjects\mac_front
+
