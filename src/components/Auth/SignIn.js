@@ -13,16 +13,33 @@ const SignIn = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault();
+        setError('');
+        setSuccess('');
+
         if (!email || !password) {
             setError('All fields are required.');
             return;
         }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
         try {
             await signInWithEmailAndPassword(auth, email, password);
             setSuccess('Signed in successfully!');
             setTimeout(() => navigate('/'), 2000);
         } catch (err) {
-            setError(err.message);
+            // Покращена обробка помилок для кращого інформування користувача
+            if (err.code === 'auth/wrong-password') {
+                setError('Incorrect password. Please try again.');
+            } else if (err.code === 'auth/user-not-found') {
+                setError('No user found with this email.');
+            } else {
+                setError('Failed to sign in. Please try again later.');
+            }
         }
     };
 
@@ -40,6 +57,7 @@ const SignIn = () => {
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            isInvalid={!!error}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formPassword">
@@ -49,6 +67,7 @@ const SignIn = () => {
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            isInvalid={!!error}
                         />
                     </Form.Group>
                     <Button variant="primary" type="submit" className="w-100">

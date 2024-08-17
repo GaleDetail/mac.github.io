@@ -6,14 +6,14 @@ const Home = () => {
     const [cards, setCards] = useState([]);
     const [showAddCardModal, setShowAddCardModal] = useState(false);
     const [showBackgroundModal, setShowBackgroundModal] = useState(false);
-    const [backgroundImage, setBackgroundImage] = useState('/images/default-background.jpg');
+    const [backgroundImage, setBackgroundImage] = useState(`${process.env.PUBLIC_URL}/static/images/default-background.jpg`);
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(6);
     const [backgrounds, setBackgrounds] = useState([]);
 
     useEffect(() => {
-        fetch('/data/backgrounds.json')
+        fetch(`${process.env.PUBLIC_URL}/data/backgrounds.json`)
             .then(response => response.json())
             .then(data => {
                 const bgList = Object.keys(data).map(name => ({
@@ -52,7 +52,7 @@ const Home = () => {
     };
 
     const handleBackgroundSelection = (bg) => {
-        setBackgroundImage(`/images/${bg}`);
+        setBackgroundImage(`${process.env.PUBLIC_URL}/static/images/${bg}`);
         setShowBackgroundModal(false);
     };
 
@@ -139,7 +139,7 @@ const Home = () => {
                         {currentBackgrounds.map((bg, index) => (
                             <div key={index} className="background-item">
                                 <Image
-                                    src={`/images/${bg.src}`}
+                                    src={`${process.env.PUBLIC_URL}/static/images/${bg.src}`}
                                     thumbnail
                                     className="background-preview"
                                     onClick={() => handleBackgroundSelection(bg.src)}

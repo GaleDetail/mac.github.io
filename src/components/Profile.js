@@ -1,6 +1,7 @@
 // src/components/Profile.js
 import React from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 const Profile = () => {
     return (
@@ -11,7 +12,7 @@ const Profile = () => {
                     <Card.Text>
                         Тут можна додати інформацію про профіль користувача.
                     </Card.Text>
-                    <Button variant="primary">Редагувати профіль</Button>
+                    <Button variant="primary" as={Link} to="/profile-settings">Редагувати профіль</Button>
                 </Card.Body>
             </Card>
         </Container>
