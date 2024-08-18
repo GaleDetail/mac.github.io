@@ -1,36 +1,55 @@
+/* Sidebar.css */
 .sidebar {
-    background-color: #f8f9fa;
-    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Прозорий чорний фон */
+    height: calc(100vh - 60px); /* Висота сайдбара з урахуванням висоти хедера */
+    width: 250px; /* Ширина сайдбара */
     padding: 15px;
-    position: relative;
+    position: fixed; /* Фіксоване положення */
+    top: 60px; /* Нижче від хедера */
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для покращення видимості */
+    z-index: 1000; /* Щоб сайдбар був поверх іншого контенту */
+    backdrop-filter: blur(5px); /* Розмиття фону під сайдбаром */
+    transition: transform 0.3s ease; /* Анімація для зникнення і появи сайдбара */
 }
 
-.collapsed {
-    width: 50px; /* Ширина, коли сайдбар згорнуто */
+.sidebar.collapsed {
+    transform: translateX(-100%); /* Перемістити сайдбар за межі екрану */
 }
 
 .sidebar-content {
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.sidebar button {
+    background-color: #007bff; /* Колір кнопок */
+    color: #fff; /* Колір тексту на кнопках */
+    border: none; /* Без рамки */
+    margin-bottom: 10px; /* Відступи між кнопками */
+    border-radius: 5px; /* Закруглені кути кнопок */
+    padding: 10px; /* Внутрішні відступи */
+    font-size: 16px; /* Розмір шрифту */
+    cursor: pointer; /* Показувати вказівник миші при наведенні */
+}
+
+.sidebar button:hover {
+    background-color: #0056b3; /* Темніший колір при наведенні */
 }
 
 .toggle-sidebar-btn {
-    position: absolute;
+    position: fixed; /* Фіксоване положення для кнопки повернення */
     top: 10px;
-    left: -15px;
-    transform: translateX(-100%);
-    z-index: 1000;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    left: 10px; /* Розташування кнопки */
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.collapsed .toggle-sidebar-btn {
-    left: 0;
-    transform: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001; /* Щоб кнопка була поверх сайдбара */
 }

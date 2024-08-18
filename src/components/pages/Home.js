@@ -58,18 +58,17 @@ const Home = () => {
 
     return (
         <Container fluid className="home-container">
+            <Sidebar
+                isCollapsed={isSidebarCollapsed}
+                toggleSidebar={toggleSidebar}
+                addCard={addCard}
+                removeAllCards={removeAllCards}
+                saveWork={saveWork}
+                exportResults={exportResults}
+                openBackgroundModal={openBackgroundModal}
+            />
             <Row className="content">
-                <Col md={isSidebarCollapsed ? 1 : 3}>
-                    <Sidebar isCollapsed={isSidebarCollapsed}
-                             toggleSidebar={toggleSidebar}
-                             addCard={addCard}
-                             removeAllCards={removeAllCards}
-                             saveWork={saveWork}
-                             exportResults={exportResults}
-                             openBackgroundModal={openBackgroundModal}
-                    />
-                </Col>
-                <Col md={isSidebarCollapsed ? 11 : 9} className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <Col className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
                     <CardContainer cards={cards} setCards={setCards} />
                 </Col>
             </Row>
