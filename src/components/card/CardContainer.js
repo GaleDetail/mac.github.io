@@ -1,19 +1,23 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import '../../styles/CardContainer.css'; // Якщо є окремі стилі для цього компонента
+import Draggable from 'react-draggable';
+import '../../styles/CardContainer.css';
 
-const CardContainer = ({ cards, setCards }) => {
+const CardContainer = ({ cards, images }) => {
     return (
-        <div className>
+        <div className="card-container">
             {cards.map((card, index) => (
-                <div key={index} className="card">
-                    <img src={card} alt={`Card ${index}`} className="card-image" />
-                    <div className="card-buttons">
-                        <Button variant="secondary" className="btn-sm" onClick={() => {/* Логіка перегортання */}}>Перегорнути карту</Button>
-                        <Button variant="secondary" className="btn-sm" onClick={() => {/* Логіка переміщення */}}>Перемістити карту</Button>
-                        <Button variant="danger" className="btn-sm" onClick={() => setCards(cards.filter((_, i) => i !== index))}>Закрити карту</Button>
+                <Draggable key={index}>
+                    <div className="card" style={{ position: 'absolute', top: card.y, left: card.x }}>
+                        <img src={`${process.env.PUBLIC_URL}/static/images/${card.src}`} alt="card" />
                     </div>
-                </div>
+                </Draggable>
+            ))}
+            {images.map((image, index) => (
+                <Draggable key={index}>
+                    <div className="image" style={{ position: 'absolute', top: image.y, left: image.x }}>
+                        <img src={`${process.env.PUBLIC_URL}/static/images/${image.src}`} alt={image.name} />
+                    </div>
+                </Draggable>
             ))}
         </div>
     );

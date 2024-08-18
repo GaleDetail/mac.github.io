@@ -1,0 +1,24 @@
+/* MovableImage.css */
+.movable-image img {
+    width: 100px; /* Розмір зображення */
+    height: auto;
+    border: 2px solid #007bff; /* Обводка зображення */
+    border-radius: 5px; /* Закруглені кути */
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ff0000; /* Червоний фон */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+}

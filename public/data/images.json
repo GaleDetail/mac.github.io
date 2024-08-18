@@ -1,0 +1,17 @@
+{
+  "flowers": [
+    { "name": "Rose", "src": "favicon.ico" },
+    { "name": "Tulip", "src": "favicon.ico" },
+    { "name": "Sunflower", "src": "favicon.ico" }
+  ],
+  "numbers": [
+    { "name": "One", "src": "number_one.png" },
+    { "name": "Two", "src": "number_two.png" },
+    { "name": "Three", "src": "number_three.png" }
+  ],
+  "animals": [
+    { "name": "Cat", "src": "animal_cat.png" },
+    { "name": "Dog", "src": "animal_dog.png" },
+    { "name": "Elephant", "src": "animal_elephant.png" }
+  ]
+}

@@ -8,6 +8,7 @@ import '../../styles/Home.css';
 
 const Home = () => {
     const [cards, setCards] = useState([]);
+    const [showAddCardModal, setShowAddCardModal] = useState(false);
     const [showBackgroundModal, setShowBackgroundModal] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState(`${process.env.PUBLIC_URL}/static/images/default-background.jpg`);
     const [searchQuery, setSearchQuery] = useState('');
@@ -15,6 +16,9 @@ const Home = () => {
     const [itemsPerPage, setItemsPerPage] = useState(6);
     const [backgrounds, setBackgrounds] = useState([]);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [images, setImages] = useState([]);
 
     const toggleSidebar = () => {
         setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -30,10 +34,24 @@ const Home = () => {
                 }));
                 setBackgrounds(bgList);
             });
+
+        fetch(`${process.env.PUBLIC_URL}/data/images.json`)
+            .then(response => response.json())
+            .then(data => {
+                const cats = Object.keys(data);
+                setCategories(cats);
+                setSelectedCategory(cats[0]);
+                setImages(data[cats[0]]);
+            });
     }, []);
 
-
     const openBackgroundModal = () => setShowBackgroundModal(true);
+    const handleCardSelection = (card) => {
+        if (card) {
+            setCards([...cards, { ...card, x: 0, y: 0 }]); // Default position
+            setShowAddCardModal(false);
+        }
+    };
     const handleBackgroundSelection = (bg) => {
         setBackgroundImage(`${process.env.PUBLIC_URL}/static/images/${bg}`);
         setShowBackgroundModal(false);
@@ -46,18 +64,35 @@ const Home = () => {
     const currentBackgrounds = filteredBackgrounds.slice(indexOfFirst, indexOfLast);
     const totalPages = Math.ceil(filteredBackgrounds.length / itemsPerPage);
 
+    const handleCategorySelect = (category) => {
+        setSelectedCategory(category);
+        fetch(`${process.env.PUBLIC_URL}/data/images.json`)
+            .then(response => response.json())
+            .then(data => setImages(data[category]));
+    };
+
     return (
         <Container fluid className="home-container">
-            <Sidebar
-                isCollapsed={isSidebarCollapsed}
-                toggleSidebar={toggleSidebar}
-                openBackgroundModal={openBackgroundModal}
-            />
             <Row className="content">
-                <Col className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                    <CardContainer cards={cards} setCards={setCards} />
+                <Col md={isSidebarCollapsed ? 1 : 3}>
+                    <Sidebar
+                        isCollapsed={isSidebarCollapsed}
+                        toggleSidebar={toggleSidebar}
+                        openBackgroundModal={openBackgroundModal}
+                        categories={categories}
+                        selectedCategory={selectedCategory}
+                        onCategorySelect={handleCategorySelect}
+                    />
+                </Col>
+                <Col md={isSidebarCollapsed ? 11 : 9} className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                    <CardContainer cards={cards} setCards={setCards} images={images} />
                 </Col>
             </Row>
+            <AddCardModal
+                show={showAddCardModal}
+                handleClose={() => setShowAddCardModal(false)}
+                handleCardSelection={handleCardSelection}
+            />
             <BackgroundModal
                 show={showBackgroundModal}
                 handleClose={() => setShowBackgroundModal(false)}
