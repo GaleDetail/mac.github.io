@@ -1,0 +1,36 @@
+.sidebar {
+    background-color: #f8f9fa;
+    height: 100vh;
+    padding: 15px;
+    position: relative;
+}
+
+.collapsed {
+    width: 50px; /* Ширина, коли сайдбар згорнуто */
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.toggle-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    left: -15px;
+    transform: translateX(-100%);
+    z-index: 1000;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collapsed .toggle-sidebar-btn {
+    left: 0;
+    transform: none;
+}

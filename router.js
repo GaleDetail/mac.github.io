@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SignUp from "./components/Auth/SignUp";
-import SignIn from "./components/Auth/SignIn";
-import ResetPassword from "./components/Auth/ResetPassword";
+import SignUp from "./components/auth/SignUp";
+import SignIn from "./components/auth/SignIn";
+import ResetPassword from "./components/auth/ResetPassword";
 import Home from "./components/Home";
 
 const RouterConfig = () => (

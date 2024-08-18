@@ -15,6 +15,11 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(6);
     const [backgrounds, setBackgrounds] = useState([]);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarCollapsed(!isSidebarCollapsed);
+    };
 
     useEffect(() => {
         fetch(`${process.env.PUBLIC_URL}/data/backgrounds.json`)
@@ -54,14 +59,17 @@ const Home = () => {
     return (
         <Container fluid className="home-container">
             <Row className="content">
-                <Sidebar
-                    addCard={addCard}
-                    removeAllCards={removeAllCards}
-                    saveWork={saveWork}
-                    exportResults={exportResults}
-                    openBackgroundModal={openBackgroundModal}
-                />
-                <Col md={9} className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <Col md={isSidebarCollapsed ? 1 : 3}>
+                    <Sidebar isCollapsed={isSidebarCollapsed}
+                             toggleSidebar={toggleSidebar}
+                             addCard={addCard}
+                             removeAllCards={removeAllCards}
+                             saveWork={saveWork}
+                             exportResults={exportResults}
+                             openBackgroundModal={openBackgroundModal}
+                    />
+                </Col>
+                <Col md={isSidebarCollapsed ? 11 : 9} className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
                     <CardContainer cards={cards} setCards={setCards} />
                 </Col>
             </Row>
