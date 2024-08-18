@@ -8,7 +8,6 @@ import '../../styles/Home.css';
 
 const Home = () => {
     const [cards, setCards] = useState([]);
-    const [showAddCardModal, setShowAddCardModal] = useState(false);
     const [showBackgroundModal, setShowBackgroundModal] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState(`${process.env.PUBLIC_URL}/static/images/default-background.jpg`);
     const [searchQuery, setSearchQuery] = useState('');
@@ -33,17 +32,8 @@ const Home = () => {
             });
     }, []);
 
-    const addCard = () => setShowAddCardModal(true);
-    const removeAllCards = () => setCards([]);
-    const saveWork = () => console.log("Work saved");
-    const exportResults = () => console.log("Results exported");
+
     const openBackgroundModal = () => setShowBackgroundModal(true);
-    const handleCardSelection = (card) => {
-        if (card) {
-            setCards([...cards, card]);
-            setShowAddCardModal(false);
-        }
-    };
     const handleBackgroundSelection = (bg) => {
         setBackgroundImage(`${process.env.PUBLIC_URL}/static/images/${bg}`);
         setShowBackgroundModal(false);
@@ -61,10 +51,6 @@ const Home = () => {
             <Sidebar
                 isCollapsed={isSidebarCollapsed}
                 toggleSidebar={toggleSidebar}
-                addCard={addCard}
-                removeAllCards={removeAllCards}
-                saveWork={saveWork}
-                exportResults={exportResults}
                 openBackgroundModal={openBackgroundModal}
             />
             <Row className="content">
@@ -72,11 +58,6 @@ const Home = () => {
                     <CardContainer cards={cards} setCards={setCards} />
                 </Col>
             </Row>
-            <AddCardModal
-                show={showAddCardModal}
-                handleClose={() => setShowAddCardModal(false)}
-                handleCardSelection={handleCardSelection}
-            />
             <BackgroundModal
                 show={showBackgroundModal}
                 handleClose={() => setShowBackgroundModal(false)}
