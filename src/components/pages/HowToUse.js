@@ -1,6 +1,6 @@
 // src/components/HowToUse.js
 import React from 'react';
-import {Container, Row, Col, Card} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 
 const HowToUse = () => {
     return (

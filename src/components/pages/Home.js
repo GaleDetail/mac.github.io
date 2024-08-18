@@ -20,6 +20,7 @@ const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [images, setImages] = useState([]);
 
+    // Додайте функцію toggleSidebar тут
     const toggleSidebar = () => {
         setIsSidebarCollapsed(!isSidebarCollapsed);
     };
@@ -73,18 +74,16 @@ const Home = () => {
 
     return (
         <Container fluid className="home-container">
+            <Sidebar
+                isCollapsed={isSidebarCollapsed}
+                toggleSidebar={toggleSidebar}
+                openBackgroundModal={openBackgroundModal}
+                categories={categories}
+                selectedCategory={selectedCategory}
+                onCategorySelect={handleCategorySelect}
+            />
             <Row className="content">
-                <Col md={isSidebarCollapsed ? 1 : 3}>
-                    <Sidebar
-                        isCollapsed={isSidebarCollapsed}
-                        toggleSidebar={toggleSidebar}
-                        openBackgroundModal={openBackgroundModal}
-                        categories={categories}
-                        selectedCategory={selectedCategory}
-                        onCategorySelect={handleCategorySelect}
-                    />
-                </Col>
-                <Col md={isSidebarCollapsed ? 11 : 9} className="main-area" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <Col className={`main-area ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
                     <CardContainer cards={cards} setCards={setCards} images={images} />
                 </Col>
             </Row>
