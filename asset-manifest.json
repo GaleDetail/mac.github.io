@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/mac.github.io/static/css/main.0ea8c254.css",
-    "main.js": "/mac.github.io/static/js/main.6f8112ce.js",
+    "main.css": "/mac.github.io/static/css/main.fb623676.css",
+    "main.js": "/mac.github.io/static/js/main.079709ca.js",
     "index.html": "/mac.github.io/index.html",
-    "main.0ea8c254.css.map": "/mac.github.io/static/css/main.0ea8c254.css.map",
-    "main.6f8112ce.js.map": "/mac.github.io/static/js/main.6f8112ce.js.map"
+    "main.fb623676.css.map": "/mac.github.io/static/css/main.fb623676.css.map",
+    "main.079709ca.js.map": "/mac.github.io/static/js/main.079709ca.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ea8c254.css",
-    "static/js/main.6f8112ce.js"
+    "static/css/main.fb623676.css",
+    "static/js/main.079709ca.js"
   ]
 }
